@@ -1,0 +1,4 @@
+URL http://<domain-local>/login or configurated URL.
+Admin:
+Email: admin@local.test
+Password: password
