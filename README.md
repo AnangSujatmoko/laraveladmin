@@ -35,7 +35,7 @@ To make the starter run on your machine just following below instructions.
 This is an example of how to list things you need to use the software and how to install them.
 * Clone the respository
   ```sh
-    git clone https://github.com/aziyan99/laravel-adminlte-starter
+    git clone https://github.com/AnangSujatmoko/laraveladmin
   ```
 * Compatible PHP version and configs for running Laravel 11.x
 * MySQL or MariaDB database
@@ -56,6 +56,6 @@ This is an example of how to list things you need to use the software and how to
     - Email: `admin@local.test` 
     - Password: `password`
 
-### Created By Anang Sujatmoko
+### Modified By Anang Sujatmoko
 
 
