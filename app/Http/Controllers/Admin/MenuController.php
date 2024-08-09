@@ -57,7 +57,7 @@ class MenuController extends Controller
             ->setOrderable('url')
             ->setOrderable('url')
             ->setName('created_at', 'Created at')
-            ->removeColumns(['updated_at', 'created_at'])
+            ->removeColumns(['updated_at'])
             ->withActions()
             ->make();
 
