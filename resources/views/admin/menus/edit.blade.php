@@ -1,55 +1,49 @@
 @extends('layouts.admin')
 
-@section('title', 'Menus')
+@section('title', 'Edit Menu')
 
 @section('main')
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
-                    <h2>Edit Menu</h2>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Menu</h3>
                 </div>
-                <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('admin.menus.index') }}"> Back</a>
+                <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('admin.menus.update', $menu->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="form-group">
+                            <label for="name"><strong>Name:</strong></label>
+                            <input type="text" id="name" name="name" value="{{ old('name', $menu->name) }}"
+                                class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="url"><strong>URL:</strong></label>
+                            <input type="text" id="url" name="url" value="{{ old('url', $menu->url) }}"
+                                class="form-control" placeholder="URL">
+                        </div>
+
+                        <div class="form-group">
+                            <a href="{{ route('admin.menus.index') }}" class="btn btn-default"
+                                role="button">{{ __('Cancel') }}</a>
+                            <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form action="{{ route('admin.menus.update', $menu->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Name:</strong>
-                        <input type="text" name="name" value="{{ $menu->name }}" class="form-control"
-                            placeholder="Name">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>URL:</strong>
-                        <input type="text" name="url" value="{{ $menu->url }}" class="form-control"
-                            placeholder="URL">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-
-        </form>
     </div>
 @endsection
