@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="javascript:void(0);">
-    <img src="https://scriptwriterph.com/wp-content/uploads/2018/11/Integrate-AdminLTE-In-Laravel-Complete-Guide-01.png" alt="Logo" width="100" height="100">
+    <img src="https://scriptwriterph.com/wp-content/uploads/2018/11/Integrate-AdminLTE-In-Laravel-Complete-Guide-01.png" alt="Logo" width="300" height="100">
   </a>
 
   <h3 align="center">Starter</h3>
