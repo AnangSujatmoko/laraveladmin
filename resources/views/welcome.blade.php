@@ -162,7 +162,7 @@
         </div>
     </header>
     <main>
-        <h1>Welcome to My Laravel Application</h1>
+        <h1>Welcome to My Laravel 11.x Application</h1>
         <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel Logo">
         <p>This is the landing page.</p>
     </main>

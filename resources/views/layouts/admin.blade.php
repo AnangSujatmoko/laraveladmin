@@ -144,8 +144,8 @@
         </div>
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2024 <a
-                    href="{{ route('admin.dashboard.index') }}">{{ config('app.name') }}</a>.</strong>
+            <strong>Copyright &copy; 2024 <a href="{{ route('admin.dashboard.index') }}">{{ config('app.name') }}</a>
+                11.x.</strong>
             <span>{{ __('All rights reserved.') }}</span>
         </footer>
     </div>
