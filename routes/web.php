@@ -6,10 +6,14 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\MenuController;
+use App\Models\Menu;
 
 Route::get('/', function () {
     // return redirect()->route('admin.dashboard.index');
-    return view('welcome'); // Menampilkan halaman landing page
+    // return view('welcome'); // Menampilkan halaman landing page
+    $menus = Menu::all();
+    return view('welcome', compact('menus'));
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -24,6 +28,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::resource('menus', MenuController::class);
 });
 
 require __DIR__ . '/auth.php';

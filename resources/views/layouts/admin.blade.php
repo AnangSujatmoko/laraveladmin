@@ -113,6 +113,14 @@
                                 </a>
                             </li>
                         @endpermission
+                        @permission('menus.read')
+                            <li class="nav-item">
+                                <a href="{{ route('admin.menus.index') }}" class="nav-link">
+                                    <i class="nav-icon fas fa-bars"></i>
+                                    <p>{{ __('Menus') }}</p>
+                                </a>
+                            </li>
+                        @endpermission
                         <li class="nav-item">
                             <a href="javascript:void(0);" id="logout-button" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
