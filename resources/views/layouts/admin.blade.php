@@ -10,6 +10,18 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     @vite(['resources/css/app.css'])
     @stack('styles')
+    <style>
+        .nav-link.active {
+            background-color: #cce5ff;
+            /* Light blue background for the active menu */
+            color: #004085;
+            /* Darker blue text color for better contrast */
+        }
+
+        .nav-link:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -23,7 +35,10 @@
                 </li>
                 @permission('dashboard.read')
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="{{ route('admin.dashboard.index') }}" class="nav-link">{{ __('Dashboard') }}</a>
+                        <a href="{{ route('admin.dashboard.index') }}"
+                            class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
+                            {{ __('Dashboard') }}
+                        </a>
                     </li>
                 @endpermission
             </ul>
@@ -61,11 +76,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="javascript:void(0);" class="brand-link">
                 <span class="brand-image">
-                    {{-- {{ __('Foo') }} --}}
                     <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel Logo" width="25"
                         height="25">
                 </span>
-                {{-- <span class="brand-text font-weight-light">{{ config('app.name') }}</span> --}}
                 <span class="brand-text font-weight-light">Laravel 11.x</span>
             </a>
 
@@ -75,7 +88,8 @@
                         data-accordion="false">
                         @permission('dashboard.read')
                             <li class="nav-item">
-                                <a href="{{ route('admin.dashboard.index') }}" class="nav-link">
+                                <a href="{{ route('admin.dashboard.index') }}"
+                                    class="nav-link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>{{ __('Dashboard') }}</p>
                                 </a>
@@ -83,7 +97,8 @@
                         @endpermission
                         @permission('roles.read')
                             <li class="nav-item">
-                                <a href="{{ route('admin.roles.index') }}" class="nav-link">
+                                <a href="{{ route('admin.roles.index') }}"
+                                    class="nav-link {{ Request::is('admin/roles*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-shield-alt"></i>
                                     <p>{{ __('Roles') }}</p>
                                 </a>
@@ -91,7 +106,8 @@
                         @endpermission
                         @permission('permissions.read')
                             <li class="nav-item">
-                                <a href="{{ route('admin.permissions.index') }}" class="nav-link">
+                                <a href="{{ route('admin.permissions.index') }}"
+                                    class="nav-link {{ Request::is('admin/permissions*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-user-shield"></i>
                                     <p>{{ __('Permissions') }}</p>
                                 </a>
@@ -99,7 +115,8 @@
                         @endpermission
                         @permission('users.read')
                             <li class="nav-item">
-                                <a href="{{ route('admin.users.index') }}" class="nav-link">
+                                <a href="{{ route('admin.users.index') }}"
+                                    class="nav-link {{ Request::is('admin/users*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>{{ __('Users') }}</p>
                                 </a>
@@ -107,7 +124,8 @@
                         @endpermission
                         @permission('profile.read')
                             <li class="nav-item">
-                                <a href="{{ route('profile.index') }}" class="nav-link">
+                                <a href="{{ route('profile.index') }}"
+                                    class="nav-link {{ Request::is('profile*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-user"></i>
                                     <p>{{ __('My Profile') }}</p>
                                 </a>
@@ -115,7 +133,8 @@
                         @endpermission
                         @permission('menus.read')
                             <li class="nav-item">
-                                <a href="{{ route('admin.menus.index') }}" class="nav-link">
+                                <a href="{{ route('admin.menus.index') }}"
+                                    class="nav-link {{ Request::is('admin/menus*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-bars"></i>
                                     <p>{{ __('Menus') }}</p>
                                 </a>
@@ -123,7 +142,8 @@
                         @endpermission
                         @permission('contents.read')
                             <li class="nav-item">
-                                <a href="{{ route('admin.content.edit') }}" class="nav-link">
+                                <a href="{{ route('admin.content.edit') }}"
+                                    class="nav-link {{ Request::is('admin/content*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-puzzle-piece"></i>
                                     <p>{{ __('Contents') }}</p>
                                 </a>
