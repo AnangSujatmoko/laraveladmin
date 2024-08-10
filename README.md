@@ -7,7 +7,7 @@
   <h3 align="center">Starter</h3>
 
   <p align="center">
-    An simple admin dashboard starter with Laravel and AdminLTE.
+    An simple admin dashboard starter with Laravel 11.x and AdminLTE.
     <br />
     <a href="https://github.com/aziyan99/laravel-adminlte-starter/issues">Report Bug</a>
     ·
@@ -17,9 +17,8 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](http://localhost)
 
-This is a starter admin dashboard project built on top of Laravel and AdminLTE. The starter including Access Control Level based on permissions and roles.
+This is a starter admin dashboard project built on top of Laravel 11.x and AdminLTE. The starter including Access Control Level based on permissions and roles.
 
 ### Built With
 
