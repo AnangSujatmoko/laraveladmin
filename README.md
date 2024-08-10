@@ -48,6 +48,7 @@ This is an example of how to list things you need to use the software and how to
 4. `php artisan migrate:fresh`
 5. `php artisan db:seed`
 6. `php artisan serve` or another web server that able to run PHP based website
+7. `php artisan storage:link` This command creates a symbolic link from public/storage to storage/app/public, allowing you to access files in storage/app/public via the web.
 
 ### Authentication
 - URL `http://<domain-local>/login` or configurated URL.
