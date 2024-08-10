@@ -5,17 +5,16 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 use App\Models\Menu;
 
-Route::get('/', function () {
-    // return redirect()->route('admin.dashboard.index');
-    // return view('welcome'); // Menampilkan halaman landing page
-    $menus = Menu::all();
-    return view('welcome', compact('menus'));
-});
+// Route for the landing page handled by HomeController
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Authenticated routes
 Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -23,6 +22,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('roles', RoleController::class)->except(['show']);
         Route::resource('permissions', PermissionController::class)->except(['show']);
         Route::resource('users', UserController::class);
+
+        // Content routes
+        Route::get('/content/edit', [ContentController::class, 'edit'])->name('content.edit');
+        Route::post('/content/update', [ContentController::class, 'update'])->name('content.update');
     });
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
@@ -30,6 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
 });
 
+// Admin menu management routes
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('menus', MenuController::class);
 });

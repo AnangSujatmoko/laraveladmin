@@ -121,6 +121,14 @@
                                 </a>
                             </li>
                         @endpermission
+                        @permission('contents.read')
+                            <li class="nav-item">
+                                <a href="{{ route('admin.content.edit') }}" class="nav-link">
+                                    <i class="nav-icon fas fa-puzzle-piece"></i>
+                                    <p>{{ __('Contents') }}</p>
+                                </a>
+                            </li>
+                        @endpermission
                         <li class="nav-item">
                             <a href="javascript:void(0);" id="logout-button" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>

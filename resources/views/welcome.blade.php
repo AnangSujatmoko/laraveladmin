@@ -161,10 +161,16 @@
             </a>
         </div>
     </header>
-    <main>
+    {{-- <main>
         <h1>Welcome to My Laravel 11.x Application</h1>
         <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel Logo">
         <p>This is the landing page.</p>
+    </main> --}}
+    <main>
+        <h1>{{ $content->title ?? 'Default Title' }}</h1>
+        <img src="{{ asset('storage/' . ($content->image ?? 'default.jpg')) }}" alt="Content Image"
+            style="max-width: 100%; max-height: 500px; width: auto; height: auto;">
+        <p>{{ $content->body ?? 'Default content body' }}</p>
     </main>
 
     <script>
