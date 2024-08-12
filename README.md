@@ -42,13 +42,14 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. `npm install`
-2. `npm run build` to build the assets
-3. `php artisan key:generate`
-4. `php artisan migrate:fresh`
-5. `php artisan db:seed`
-6. `php artisan serve` or another web server that able to run PHP based website
-7. `php artisan storage:link` This command creates a symbolic link from public/storage to storage/app/public, allowing you to access files in storage/app/public via the web.
+1. `cp .env.example .env`
+2. `npm install`
+3. `npm run build` to build the assets
+4. `php artisan key:generate`
+5. `php artisan migrate:fresh`
+6. `php artisan db:seed`
+7. `php artisan serve` or another web server that able to run PHP based website
+8. `php artisan storage:link` This command creates a symbolic link from public/storage to storage/app/public, allowing you to access files in storage/app/public via the web.
 
 ### Authentication
 - URL `http://<domain-local>/login` or configurated URL.
