@@ -10,7 +10,7 @@
                 <div class="card text-white bg-primary">
                     <div class="card-body text-center">
                         <div class="d-flex justify-content-center align-items-center mb-3">
-                            <i class="fas fa-user-shield fa-2x mr-2"></i>
+                            <i class="fas fa-shield-alt fa-2x mr-2"></i>
                             <h5 class="card-title m-0">Total Roles</h5>
                         </div>
                         <h3 class="card-text">{{ $totalRoles }}</h3>
