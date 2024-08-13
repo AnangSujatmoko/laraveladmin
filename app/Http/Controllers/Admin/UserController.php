@@ -154,10 +154,21 @@ class UserController extends Controller
         return Excel::download(new UsersExport, 'users.xlsx');
     }
 
-    public function importExcel(Request $request): RedirectResponse
-    {
-        validate_permission('users.create');
+    // public function importExcel(Request $request): RedirectResponse
+    // {
+    //     validate_permission('users.create');
 
+    //     $request->validate([
+    //         'file' => 'required|mimes:xlsx,csv',
+    //     ]);
+
+    //     Excel::import(new UsersImport, $request->file('file'));
+
+    //     return redirect()->route('admin.users.index')->with('success', 'Users imported successfully!');
+    // }
+
+    public function importExcel(Request $request)
+    {
         $request->validate([
             'file' => 'required|mimes:xlsx,csv',
         ]);
