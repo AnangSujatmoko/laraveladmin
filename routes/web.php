@@ -23,6 +23,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('permissions', PermissionController::class)->except(['show']);
         Route::resource('users', UserController::class);
 
+        // Route for exporting users as PDF
+        Route::get('/export_pdf', [UserController::class, 'exportPdf'])->name('users.export_pdf');
+
+        Route::get('/export_excel', [UserController::class, 'exportExcel'])->name('users.export_excel');
+
+        Route::post('/import_excel', [UserController::class, 'importExcel'])->name('users.import_excel');
+
         // Content routes
         Route::get('/content/edit', [ContentController::class, 'edit'])->name('content.edit');
         Route::post('/content/update', [ContentController::class, 'update'])->name('content.update');

@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\DataTablesColumnsBuilder;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StoreUserRequest;
-use App\Http\Requests\Admin\UpdateUserRequest;
+use PDF;
+use App\Imports\UsersImport;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Blade;
+use App\Helpers\DataTablesColumnsBuilder;
+use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -132,5 +136,34 @@ class UserController extends Controller
         return redirect()
             ->route('admin.users.index')
             ->with('success', 'User deleted successfully!');
+    }
+
+    public function exportPdf(Request $request)
+    {
+        validate_permission('users.read');
+
+        $users = User::all();
+        $pdf = PDF::loadView('admin.users.pdf', compact('users'));
+        return $pdf->download('users.pdf');
+    }
+
+    public function exportExcel()
+    {
+        validate_permission('users.read');
+
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    public function importExcel(Request $request): RedirectResponse
+    {
+        validate_permission('users.create');
+
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv',
+        ]);
+
+        Excel::import(new UsersImport, $request->file('file'));
+
+        return redirect()->route('admin.users.index')->with('success', 'Users imported successfully!');
     }
 }
