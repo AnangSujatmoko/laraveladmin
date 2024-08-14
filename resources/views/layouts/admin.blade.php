@@ -30,8 +30,9 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                        <i class="fas fa-bars"></i>
+                    </a>
                 </li>
                 @permission('dashboard.read')
                     <li class="nav-item d-none d-sm-inline-block">
@@ -43,6 +44,16 @@
                 @endpermission
             </ul>
             <ul class="navbar-nav ml-auto">
+                <!-- Right navbar links -->
+                <ul class="navbar-nav ml-auto mr-2">
+                    @permission('dashboard.read')
+                        <li class="nav-item">
+                            <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}" target="_blank">
+                                <i class="fas fa-globe"></i> {{ __('View website') }}
+                            </a>
+                        </li>
+                    @endpermission
+                </ul>
                 <!-- Navbar Search -->
                 <li class="nav-item">
                     <a class="nav-link" data-widget="navbar-search" href="#" role="button">
